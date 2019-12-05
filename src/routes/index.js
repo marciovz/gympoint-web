@@ -8,6 +8,7 @@ import Enrollment from '~/pages/Enrollment';
 import Help_order from '~/pages/Help_order';
 
 export default function Routes() {
+  console.tron.log('teste de log em route/index.js');
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
