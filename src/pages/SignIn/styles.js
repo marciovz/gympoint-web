@@ -46,6 +46,15 @@ export const Content = styled.div`
           color: #999;
         }
       }
+
+      span {
+        display: block
+        text-align: right;
+        font-size: 12px;
+        color: #fb6f91;
+        align-self: flex-end;
+        font-weight: bold;
+      }
     }
 
     button {
