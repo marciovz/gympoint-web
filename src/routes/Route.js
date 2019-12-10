@@ -1,25 +1,33 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import AuthLayout from '~/pages/_layouts/auth';
 import DefaultLayout from '~/pages/_layouts/default';
 
 import { store } from '~/store';
+import { redirectPageRequest } from '~/store/modules/redirectPage/actions';
 
 export default function RouteWrapper({
   component: Component,
   isPrivate,
   ...rest
 }) {
+  const dispatch = useDispatch();
+
+  function handleRedirect(link) {
+    dispatch(redirectPageRequest(link));
+  }
+
   const { signed } = store.getState().auth;
 
   if (!signed && isPrivate) {
-    return <Redirect to="/" />;
+    handleRedirect('/');
   }
 
   if (signed && !isPrivate) {
-    return <Redirect to="/plan" />;
+    handleRedirect('/plan');
   }
 
   const Layout = signed ? DefaultLayout : AuthLayout;
