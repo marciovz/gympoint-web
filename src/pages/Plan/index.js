@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { formatPrice } from '~/util/format';
-
+import history from '~/services/history';
 import api from '~/services/api';
 
 import {
@@ -38,11 +38,15 @@ export default function Plan() {
     loadPlans();
   }, []);
 
+  function handleNewRegister() {
+    history.push('/plan/new');
+  }
+
   return (
     <Container>
       <Header>
         <span>Gerenciando planos</span>
-        <button type="button">
+        <button type="button" onClick={handleNewRegister}>
           <Icon />
           Cadastrar
         </button>
