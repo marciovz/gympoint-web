@@ -32,7 +32,6 @@ export default function Plan() {
           priceFormated: formatPrice(item.price),
         };
       });
-      console.tron.log(data);
       setPlans(data);
     }
     loadPlans();
@@ -63,7 +62,7 @@ export default function Plan() {
               <span>{plan.title}</span>
               <span>{plan.durationFormated}</span>
               <span>{plan.priceFormated}</span>
-              <LinkEditar>Editar</LinkEditar>
+              <LinkEditar to={`/plan/edit/${plan.id}`}>Editar</LinkEditar>
               <LinkApagar>Apagar</LinkApagar>
             </Line>
           ))}

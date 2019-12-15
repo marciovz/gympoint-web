@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { MdAdd } from 'react-icons/md';
 import { darken } from 'polished';
 
@@ -97,12 +98,10 @@ export const Line = styled.div`
   }
 `;
 
-export const LinkEditar = styled.button`
+export const LinkEditar = styled(Link)`
   font-size: 15px;
   font-weight: normal;
   color: #4d85ee;
-  border: 0;
-  background: none;
 
   &:hover {
     color: ${darken(0.1, '#4d85ee')};

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import ProtoTypes from 'prop-types';
 import * as Yup from 'yup';
 
+import { formatPrice } from '~/util/format';
 import { Container, LineTwo } from './styles';
 
 const schema = Yup.object().shape({
@@ -17,12 +18,24 @@ const schema = Yup.object().shape({
 });
 
 export default function FormPlan({ dataPlan, id, onSubmit }) {
-  const InitialData = {
-    title: dataPlan.title,
-    duration: dataPlan.duration,
-    price: dataPlan.price,
-    totalPrice: dataPlan.duration * dataPlan.price,
-  };
+  const [title, setTitle] = useState('');
+  const [duration, setDuration] = useState('');
+  const [price, setPrice] = useState('');
+  const [totalPrice, setTotalPrice] = useState('');
+
+  useEffect(() => {
+    setTitle(dataPlan.title);
+    setDuration(dataPlan.duration);
+    setPrice(dataPlan.price);
+  }, [dataPlan.duration, dataPlan.price, dataPlan.title]);
+
+  useMemo(() => {
+    let newTotalPrice = '';
+    if (typeof duration === 'number' && typeof price === 'number') {
+      newTotalPrice = formatPrice(duration * price);
+    }
+    setTotalPrice(newTotalPrice);
+  }, [duration, price]);
 
   return (
     <Container>
@@ -30,7 +43,7 @@ export default function FormPlan({ dataPlan, id, onSubmit }) {
         schema={schema}
         id={id}
         onSubmit={onSubmit}
-        initialData={InitialData}
+        initialData={{ title, duration, price, totalPrice }}
       >
         <label>
           TÍTULO DO PLANO
@@ -40,12 +53,20 @@ export default function FormPlan({ dataPlan, id, onSubmit }) {
         <LineTwo>
           <label>
             DURAÇÃO (em meses)
-            <Input name="duration" type="number" />
+            <Input
+              name="duration"
+              type="number"
+              onChange={e => setDuration(Number(e.target.value))}
+            />
           </label>
 
           <label>
             PREÇO MENSAL
-            <Input name="price" type="number" />
+            <Input
+              name="price"
+              type="number"
+              onChange={e => setPrice(Number(e.target.value))}
+            />
           </label>
 
           <label>
