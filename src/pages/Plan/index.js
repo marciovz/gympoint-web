@@ -5,10 +5,11 @@ import { formatPrice } from '~/util/format';
 import history from '~/services/history';
 import api from '~/services/api';
 
+import HeaderDasBoard from '~/components/HeaderDashBoard';
+import ButtonRegister from '~/components/Buttons/ButtonRegister';
+
 import {
   Container,
-  Header,
-  Icon,
   Content,
   LineTitle,
   LineContent,
@@ -56,13 +57,9 @@ export default function Plan() {
 
   return (
     <Container>
-      <Header>
-        <span>Gerenciando planos</span>
-        <button type="button" onClick={handleNewRegister}>
-          <Icon />
-          Cadastrar
-        </button>
-      </Header>
+      <HeaderDasBoard title="Gerenciando planos">
+        <ButtonRegister onClick={handleNewRegister} />
+      </HeaderDasBoard>
       <Content>
         <LineTitle>
           <h1>TÍTULO</h1>

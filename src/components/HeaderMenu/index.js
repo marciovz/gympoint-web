@@ -10,7 +10,7 @@ import { Container, Content, Profile } from './styles';
 import { signOut } from '~/store/modules/auth/actions';
 import { redirectPageRequest } from '~/store/modules/redirectPage/actions';
 
-export default function Header() {
+export default function HeaderMenu() {
   const dispatch = useDispatch();
   const userName = useSelector(state => state.user.profile.name);
 
