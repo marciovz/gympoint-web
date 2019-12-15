@@ -18,6 +18,7 @@ export default function NavMenu() {
     <Container>
       {itens.map(iten => (
         <ItensMenu
+          key={iten.page}
           selected={pageName === `${iten.page}` ? 'selected' : null}
           onClick={() => handleRedirect(`/${iten.page}`)}
         >
