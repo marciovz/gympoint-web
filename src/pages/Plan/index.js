@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 import { formatPrice } from '~/util/format';
 import history from '~/services/history';
@@ -41,6 +42,18 @@ export default function Plan() {
     history.push('/plan/new');
   }
 
+  async function handleDelete(id) {
+    try {
+      if (!window.confirm('Deseja excluir o plano?')) return;
+      await api.delete(`/plans/${id}`);
+      const newList = plans.filter(plan => plan.id !== id);
+      setPlans(newList);
+      toast.success('Plano excluído com sucesso!');
+    } catch (err) {
+      toast.error('Não foi possível excluir o plano!');
+    }
+  }
+
   return (
     <Container>
       <Header>
@@ -63,7 +76,9 @@ export default function Plan() {
               <span>{plan.durationFormated}</span>
               <span>{plan.priceFormated}</span>
               <LinkEditar to={`/plan/edit/${plan.id}`}>Editar</LinkEditar>
-              <LinkApagar>Apagar</LinkApagar>
+              <LinkApagar onClick={() => handleDelete(plan.id)}>
+                Apagar
+              </LinkApagar>
             </Line>
           ))}
         </LineContent>
