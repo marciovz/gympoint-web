@@ -57,12 +57,12 @@ export default function FormStudent({ dataStudent, onSubmit }) {
 
           <label>
             Peso (em kg)
-            <Input name="weight" type="number" />
+            <Input name="weight" type="number" step="any" />
           </label>
 
           <label>
             Altura
-            <Input name="height" type="number" />
+            <Input name="height" type="number" step="any" />
           </label>
         </LineThree>
       </Form>
