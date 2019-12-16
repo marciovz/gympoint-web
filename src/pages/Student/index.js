@@ -4,19 +4,13 @@ import { toast } from 'react-toastify';
 import history from '~/services/history';
 import api from '~/services/api';
 
+import Container from '~/components/Container';
 import HeaderDashBoard from '~/components/HeaderDashBoard';
 import ButtonRegister from '~/components/Buttons/ButtonRegister';
 import InputSearch from '~/components/InputSearch';
 import Dashboard from '~/components/DashBoard';
 
-import {
-  Container,
-  LineTitle,
-  LineContent,
-  Line,
-  LinkEditar,
-  LinkApagar,
-} from './styles';
+import { LineTitle, LineContent, Line, LinkEditar, LinkApagar } from './styles';
 
 export default function Student() {
   const [students, setStudents] = useState([]);
