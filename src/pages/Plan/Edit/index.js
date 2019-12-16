@@ -50,7 +50,7 @@ export default function Edit() {
         <ButtonSave type="submit" form="formPlan" />
       </HeaderDasBoard>
       <DashBoard>
-        <FormPlan id="formPlan" onSubmit={handleSave} dataPlan={plan} />
+        <FormPlan onSubmit={handleSave} dataPlan={plan} />
       </DashBoard>
     </Container>
   );

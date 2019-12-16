@@ -17,7 +17,7 @@ const schema = Yup.object().shape({
     .required(),
 });
 
-export default function FormPlan({ dataPlan, id, onSubmit }) {
+export default function FormPlan({ dataPlan, onSubmit }) {
   const [title, setTitle] = useState('');
   const [duration, setDuration] = useState('');
   const [price, setPrice] = useState('');
@@ -41,7 +41,7 @@ export default function FormPlan({ dataPlan, id, onSubmit }) {
     <Container>
       <Form
         schema={schema}
-        id={id}
+        id="formPlan"
         onSubmit={onSubmit}
         initialData={{ title, duration, price, totalPrice }}
       >
@@ -93,6 +93,5 @@ FormPlan.propTypes = {
     duration: ProtoTypes.oneOfType([ProtoTypes.number, ProtoTypes.string]),
     price: ProtoTypes.oneOfType([ProtoTypes.number, ProtoTypes.string]),
   }),
-  id: ProtoTypes.string.isRequired,
   onSubmit: ProtoTypes.func.isRequired,
 };

@@ -33,7 +33,7 @@ export default function New() {
         <ButtonSave type="submit" form="formPlan" />
       </HeaderDasBoard>
       <DashBoard>
-        <FormPlan id="formPlan" onSubmit={handleSave} />
+        <FormPlan onSubmit={handleSave} />
       </DashBoard>
     </Container>
   );
