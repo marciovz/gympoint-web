@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 import history from '~/services/history';
 import api from '~/services/api';
@@ -32,7 +33,17 @@ export default function Student() {
     history.push('/student/new');
   }
 
-  function handleDelete() {}
+  async function handleDelete(id) {
+    try {
+      if (!window.confirm('Deseja excluir o aluno?')) return;
+      await api.delete(`/students/${id}`);
+      const newList = students.filter(student => student.id !== id);
+      setStudents(newList);
+      toast.success('Aluno excluído com sucesso!');
+    } catch (err) {
+      toast.error('Não foi possível excluir o aluno!');
+    }
+  }
 
   async function handleSearch(name) {
     const response = await api.get('students', {
