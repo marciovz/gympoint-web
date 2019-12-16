@@ -7,16 +7,10 @@ import api from '~/services/api';
 
 import HeaderDasBoard from '~/components/HeaderDashBoard';
 import ButtonRegister from '~/components/Buttons/ButtonRegister';
+import Container from '~/components/Container';
+import DashBoard from '~/components/DashBoard';
 
-import {
-  Container,
-  Content,
-  LineTitle,
-  LineContent,
-  Line,
-  LinkEditar,
-  LinkApagar,
-} from './styles';
+import { LineTitle, LineContent, Line, LinkEditar, LinkApagar } from './styles';
 
 export default function Plan() {
   const [plans, setPlans] = useState([]);
@@ -60,7 +54,7 @@ export default function Plan() {
       <HeaderDasBoard title="Gerenciando planos">
         <ButtonRegister onClick={handleNewRegister} />
       </HeaderDasBoard>
-      <Content>
+      <DashBoard>
         <LineTitle>
           <h1>TÍTULO</h1>
           <h1>DURAÇÃO</h1>
@@ -79,7 +73,7 @@ export default function Plan() {
             </Line>
           ))}
         </LineContent>
-      </Content>
+      </DashBoard>
     </Container>
   );
 }

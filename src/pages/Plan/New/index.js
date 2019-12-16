@@ -4,12 +4,12 @@ import { toast } from 'react-toastify';
 import history from '~/services/history';
 import api from '~/services/api';
 
+import Container from '~/components/Container';
 import HeaderDasBoard from '~/components/HeaderDashBoard';
 import ButtonSave from '~/components/Buttons/ButtonSave';
 import ButtonGoBack from '~/components/Buttons/ButtonGoBack';
+import DashBoard from '~/components/DashBoard';
 import FormPlan from '~/components/FormPlan';
-
-import { Container } from './styles';
 
 export default function New() {
   function handleGoBack() {
@@ -32,7 +32,9 @@ export default function New() {
         <ButtonGoBack onClick={handleGoBack} />
         <ButtonSave type="submit" form="formPlan" />
       </HeaderDasBoard>
-      <FormPlan id="formPlan" onSubmit={handleSave} />
+      <DashBoard>
+        <FormPlan id="formPlan" onSubmit={handleSave} />
+      </DashBoard>
     </Container>
   );
 }

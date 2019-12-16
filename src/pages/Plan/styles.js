@@ -2,20 +2,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { darken } from 'polished';
 
-export const Container = styled.div`
-  width: 1300px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-export const Content = styled.div`
-  margin-top: 10px;
-  padding: 30px;
-  background-color: #fff;
-`;
-
 export const LineTitle = styled.div`
   display: grid;
   grid-template-columns: 6fr 3fr 3fr 1fr 1fr;
